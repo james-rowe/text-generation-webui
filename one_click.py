@@ -180,7 +180,7 @@ def install_webui():
         print("N) None (I want to run models in CPU mode)")
         print()
 
-        choice = input("Input> ").upper()
+        choice = 'A'
         while choice not in 'ABCDN':
             print("Invalid choice. Please try again.")
             choice = input("Input> ").upper()
@@ -199,7 +199,7 @@ def install_webui():
         else:
             # Ask for CUDA version if using NVIDIA
             print("\nDo you want to use CUDA 11.8 instead of 12.1? Only choose this option if your GPU is very old (Kepler or older).\nFor RTX and GTX series GPUs, say \"N\". If unsure, say \"N\".\n")
-            use_cuda118 = input("Input (Y/N)> ").upper().strip('"\'').strip()
+            use_cuda118 = 'N'
             while use_cuda118 not in 'YN':
                 print("Invalid choice. Please try again.")
                 use_cuda118 = input("Input> ").upper().strip('"\'').strip()
