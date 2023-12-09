@@ -30,7 +30,7 @@ class OpenMonkeyPatch:
 def my_get(url, **kwargs):
     logger.info('Unwanted HTTP request redirected to localhost :)')
     kwargs.setdefault('allow_redirects', True)
-    return requests.api.request('get', 'http://127.0.0.1/', **kwargs)
+    return requests.api.request('get', 'http://0.0.0.0/', **kwargs)
 
 
 # Kindly provided by our friend WizardLM-30B
@@ -41,7 +41,7 @@ def my_open(*args, **kwargs):
             file_contents = f.read()
 
         file_contents = file_contents.replace(b'\t\t<script\n\t\t\tsrc="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.7/iframeResizer.contentWindow.min.js"\n\t\t\tasync\n\t\t></script>', b'')
-        file_contents = file_contents.replace(b'cdnjs.cloudflare.com', b'127.0.0.1')
+        file_contents = file_contents.replace(b'cdnjs.cloudflare.com', b'0.0.0.0')
         return io.BytesIO(file_contents)
     else:
         return original_open(*args, **kwargs)
